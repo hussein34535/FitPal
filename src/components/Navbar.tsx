@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Flame, UtensilsCrossed, Dumbbell, RotateCcw, LayoutDashboard, FileText, Settings, User } from 'lucide-react';
+import { Flame, UtensilsCrossed, Dumbbell, Settings, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { clearProfile } from '@/lib/user-store';
 
@@ -33,7 +33,7 @@ export function Navbar({ onReset }: NavbarProps) {
             <button
               onClick={() => { clearProfile(); onReset(); }}
               className="p-2 rounded-lg hover:bg-white/5 transition-colors text-muted-foreground hover:text-destructive"
-              title="تعديل / إعادة ضبط"
+              title="إعادة ضبط"
             >
               <Settings className="w-5 h-5" />
             </button>
@@ -44,7 +44,7 @@ export function Navbar({ onReset }: NavbarProps) {
         </div>
 
         {/* Main navigation row */}
-        <div className="flex items-center gap-1 pb-3 overflow-x-auto scrollbar-hide">
+        <div className="flex items-center gap-1 pb-3">
           {navItems.map(item => {
             const isActive = location.pathname === item.path;
             const Icon = item.icon;
@@ -64,18 +64,9 @@ export function Navbar({ onReset }: NavbarProps) {
               </button>
             );
           })}
-          
-          {/* Additional requested links */}
-          <button className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-display font-bold text-muted-foreground hover:text-foreground hover:bg-white/5 whitespace-nowrap">
-            <LayoutDashboard className="w-4 h-4" />
-            لوحة التحكم (Admin)
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-display font-bold text-muted-foreground hover:text-foreground hover:bg-white/5 whitespace-nowrap">
-            <FileText className="w-4 h-4" />
-            ملخص بياناتك
-          </button>
         </div>
       </div>
     </nav>
   );
 }
+

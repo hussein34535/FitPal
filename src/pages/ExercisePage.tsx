@@ -1,9 +1,10 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlassCard } from '@/components/GlassCard';
+import { AnimatedExercise } from '@/components/AnimatedExercise';
 import { getProfile } from '@/lib/user-store';
 import { generateWorkoutPlan, type WorkoutDay, type Exercise } from '@/lib/fitness-data';
-import { ChevronDown, Timer, Dumbbell, AlertTriangle, ListChecks, Play, ExternalLink } from 'lucide-react';
+import { ChevronDown, Timer, Dumbbell, AlertTriangle, ListChecks } from 'lucide-react';
 
 export default function ExercisePage() {
   const profile = getProfile()!;
@@ -154,6 +155,11 @@ export default function ExercisePage() {
                         className="overflow-hidden"
                       >
                         <div className="pt-4 mt-4 border-t border-border space-y-4">
+                          {/* Animation */}
+                          {exercise.images && exercise.images.length > 0 && (
+                            <AnimatedExercise images={exercise.images} className="h-56 mt-2 mb-4 w-full" />
+                          )}
+
                           {/* Stats */}
                           <div className="grid grid-cols-3 gap-2 text-center">
                             <div className="glass-panel p-3 rounded-lg">

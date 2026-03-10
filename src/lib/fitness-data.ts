@@ -66,7 +66,7 @@ export interface Exercise {
   restSeconds: number;
   instructions: string[];
   commonMistakes: string[];
-  videoId: string; // YouTube video ID
+  images?: string[];
 }
 
 export interface WorkoutDay {
@@ -90,7 +90,10 @@ const allExercises: Record<string, Exercise> = {
       'قفل المرفقين بالكامل في الأعلى',
       'عدم ثبات لوح الكتف على البنش',
     ],
-    videoId: 'rT7DgCr-3pg',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg'
+    ],
   },
   inclineDumbbell: {
     id: '2', name: 'بنش مائل بالدمبل', sets: 3, reps: '10-12', muscle: 'صدر علوي', restSeconds: 75,
@@ -105,7 +108,10 @@ const allExercises: Record<string, Exercise> = {
       'استخدام أوزان ثقيلة بدون تحكم',
       'عدم إنزال الدمبلز بشكل كافي',
     ],
-    videoId: '8iPEnn-ltC8',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/1.jpg'
+    ],
   },
   cableFlyes: {
     id: '3', name: 'كروس أوفر', sets: 3, reps: '12-15', muscle: 'صدر', restSeconds: 60,
@@ -120,7 +126,10 @@ const allExercises: Record<string, Exercise> = {
       'استخدام الجسم كله في السحب',
       'عدم الضغط في نهاية الحركة',
     ],
-    videoId: 'taI4XduLpTk',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/1.jpg'
+    ],
   },
   overheadPress: {
     id: '4', name: 'أوفرهيد بريس', sets: 4, reps: '8-10', muscle: 'كتف أمامي', restSeconds: 90,
@@ -135,7 +144,10 @@ const allExercises: Record<string, Exercise> = {
       'دفع البار للأمام بدل فوق الرأس مباشرة',
       'عدم تثبيت الجذع (Core)',
     ],
-    videoId: '_RlRDWO2jfg',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/1.jpg'
+    ],
   },
   lateralRaise: {
     id: '5', name: 'رفرفة جانبية', sets: 3, reps: '12-15', muscle: 'كتف جانبي', restSeconds: 60,
@@ -150,7 +162,10 @@ const allExercises: Record<string, Exercise> = {
       'رفع الكتفين (الترابس) أثناء الحركة',
       'الرفع فوق مستوى الكتف',
     ],
-    videoId: '3VcKaXpzqRo',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/1.jpg'
+    ],
   },
   tricepPushdown: {
     id: '6', name: 'تراي بوش داون', sets: 3, reps: '10-12', muscle: 'تراي', restSeconds: 60,
@@ -165,7 +180,10 @@ const allExercises: Record<string, Exercise> = {
       'الميل بالجسم على الوزن',
       'عدم الاستقامة الكاملة في الأسفل',
     ],
-    videoId: '2-LAMcpzODU',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/1.jpg'
+    ],
   },
   deadlift: {
     id: '7', name: 'ديد ليفت', sets: 4, reps: '6-8', muscle: 'ظهر', restSeconds: 120,
@@ -181,7 +199,10 @@ const allExercises: Record<string, Exercise> = {
       'رفع الوركين أسرع من الكتفين',
       'عدم تفعيل الـ Core',
     ],
-    videoId: 'op9kVnSso6Q',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/1.jpg'
+    ],
   },
   pullUp: {
     id: '8', name: 'بول أب', sets: 4, reps: '8-10', muscle: 'ظهر', restSeconds: 90,
@@ -196,7 +217,10 @@ const allExercises: Record<string, Exercise> = {
       'عدم النزول بالكامل (نص حركة)',
       'إهمال تفعيل عضلات الظهر والاعتماد على الذراعين',
     ],
-    videoId: 'eGo4IYlbE5g',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/1.jpg'
+    ],
   },
   barbellRow: {
     id: '9', name: 'تجديف بالبار', sets: 3, reps: '10-12', muscle: 'ظهر وسط', restSeconds: 75,
@@ -211,7 +235,10 @@ const allExercises: Record<string, Exercise> = {
       'الوقوف بشكل عمودي تقريباً',
       'سحب البار للصدر بدل البطن',
     ],
-    videoId: 'FWJR5Ve8bnQ',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/1.jpg'
+    ],
   },
   facePull: {
     id: '10', name: 'فيس بول', sets: 3, reps: '12-15', muscle: 'كتف خلفي', restSeconds: 60,
@@ -226,7 +253,10 @@ const allExercises: Record<string, Exercise> = {
       'سحب الحبل للأسفل بدل مستوى الوجه',
       'عدم فتح المرفقين للخارج',
     ],
-    videoId: 'rep-qVOkqgk',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/1.jpg'
+    ],
   },
   barbellCurl: {
     id: '11', name: 'باي بالبار', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
@@ -241,7 +271,10 @@ const allExercises: Record<string, Exercise> = {
       'تحريك المرفقين للأمام',
       'إنزال الوزن بسرعة بدون تحكم',
     ],
-    videoId: 'kwG2ipFRgFo',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/1.jpg'
+    ],
   },
   hammerCurl: {
     id: '12', name: 'هامر كيرل', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
@@ -256,7 +289,10 @@ const allExercises: Record<string, Exercise> = {
       'استخدام الكتف في الرفع',
       'سرعة الحركة الزائدة',
     ],
-    videoId: 'zC3nLlEvin4',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/1.jpg'
+    ],
   },
   squat: {
     id: '13', name: 'سكوات', sets: 4, reps: '8-10', muscle: 'أرجل', restSeconds: 120,
@@ -272,7 +308,10 @@ const allExercises: Record<string, Exercise> = {
       'تقويس الظهر في الأسفل (Butt Wink)',
       'عدم النزول بالعمق الكافي',
     ],
-    videoId: 'bEv6CCg2BC8',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/1.jpg'
+    ],
   },
   legPress: {
     id: '14', name: 'ليج بريس', sets: 4, reps: '10-12', muscle: 'أرجل', restSeconds: 90,
@@ -287,7 +326,10 @@ const allExercises: Record<string, Exercise> = {
       'رفع المؤخرة عن المقعد',
       'وضع القدمين ضيق جداً',
     ],
-    videoId: 'IZxyjW7MPJQ',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/1.jpg'
+    ],
   },
   lunges: {
     id: '15', name: 'لانجز', sets: 3, reps: '10 لكل رجل', muscle: 'أرجل', restSeconds: 75,
@@ -302,7 +344,6 @@ const allExercises: Record<string, Exercise> = {
       'ميل الجسم للأمام',
       'عدم التوازن الجانبي',
     ],
-    videoId: 'QOVaHwm-Q6U',
   },
   legCurl: {
     id: '16', name: 'ليج كيرل', sets: 3, reps: '10-12', muscle: 'خلفية', restSeconds: 60,
@@ -317,7 +358,10 @@ const allExercises: Record<string, Exercise> = {
       'استخدام الزخم بدل العضلة',
       'حركة جزئية (نص الحركة)',
     ],
-    videoId: '1Tq3QdYUuHs',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/1.jpg'
+    ],
   },
   legExtension: {
     id: '17', name: 'ليج اكستنشن', sets: 3, reps: '12-15', muscle: 'أمامية', restSeconds: 60,
@@ -332,7 +376,10 @@ const allExercises: Record<string, Exercise> = {
       'عدم الفرد الكامل للركبة في الأعلى',
       'استخدام وزن ثقيل مع حركة جزئية',
     ],
-    videoId: 'YyvSfVjQeL0',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/1.jpg'
+    ],
   },
   calfRaise: {
     id: '18', name: 'كاف ريز', sets: 4, reps: '15-20', muscle: 'سمانة', restSeconds: 45,
@@ -347,7 +394,10 @@ const allExercises: Record<string, Exercise> = {
       'عدم النزول بالكامل للتمدد',
       'ثني الركبتين أثناء الحركة',
     ],
-    videoId: 'gwLzBJYoWlI',
+    images: [
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg',
+      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/1.jpg'
+    ],
   },
 };
 
