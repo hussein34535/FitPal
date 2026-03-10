@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 6.3%;
+    --foreground: 0 0% 96.1%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 96.1%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 96.1%;
+
+    --primary: 345 100% 21.4%;
+    --primary-foreground: 0 0% 96.1%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96.1%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 345 100% 21.4%;
+    --accent-foreground: 0 0% 96.1%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 96.1%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 345 100% 21.4%;
+
+    --radius: 1rem;
+
+    --glass-bg: 0 0% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-blur: 20px;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 96.1%;
+    --sidebar-primary: 345 100% 21.4%;
+    --sidebar-primary-foreground: 0 0% 96.1%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 96.1%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 345 100% 21.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    direction: rtl;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: hsla(var(--glass-bg));
+    border: 1px solid hsla(var(--glass-border));
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: var(--radius);
+  }
+
+  .glass-panel-strong {
+    background: hsla(0, 0%, 100%, 0.08);
+    border: 1px solid hsla(0, 0%, 100%, 0.12);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: var(--radius);
+  }
+
+  .burgundy-glow {
+    box-shadow: 0 0 40px hsla(345, 100%, 21.4%, 0.3),
+                0 0 80px hsla(345, 100%, 21.4%, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(0 0% 96.1%), hsl(0 0% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cairo', sans-serif;
+  }
+  .font-body {
+    font-family: 'Cairo', sans-serif;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
