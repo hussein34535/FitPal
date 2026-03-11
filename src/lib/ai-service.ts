@@ -8,7 +8,7 @@ export interface ChatMessage {
 }
 
 const openrouter = new OpenRouter({
-  apiKey: "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",
+  apiKey: import.meta.env.VITE_OPENROUTER_API_KEY as string,
   dangerouslyAllowBrowser: true
 });
 
