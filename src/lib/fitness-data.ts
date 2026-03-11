@@ -471,3 +471,75 @@ export const foodDatabase: FoodItem[] = [
   { id: 'f11', name: 'تونة معلبة (100g)', calories: 116, protein: 26, carbs: 0, fat: 1, fiber: 0, category: 'بروتين' },
   { id: 'f12', name: 'خبز أسمر (شريحة)', calories: 69, protein: 3.6, carbs: 12, fat: 1, fiber: 1.9, category: 'كربوهيدرات' },
 ];
+
+export interface MealPlan {
+  id: string;
+  name: string;
+  target: 'تنشيف' | 'ضخامة' | 'ثبات';
+  totalCalories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  meals: {
+    name: string;
+    foodId: string;
+    quantity: number;
+  }[];
+}
+
+export const mealPlans: MealPlan[] = [
+  {
+    id: 'mp1',
+    name: 'خطة التنشيف المتقدمة',
+    target: 'تنشيف',
+    totalCalories: 1500,
+    protein: 150,
+    carbs: 100,
+    fat: 55,
+    meals: [
+      { name: 'فطار', foodId: 'f6', quantity: 0.5 },
+      { name: 'فطار', foodId: 'f5', quantity: 1.5 },
+      { name: 'غداء', foodId: 'f1', quantity: 2 },
+      { name: 'غداء', foodId: 'f2', quantity: 1 },
+      { name: 'سناك', foodId: 'f4', quantity: 1 },
+      { name: 'عشاء', foodId: 'f11', quantity: 1.5 },
+    ]
+  },
+  {
+    id: 'mp2',
+    name: 'ضخامة عضلية نظيفة',
+    target: 'ضخامة',
+    totalCalories: 3000,
+    protein: 180,
+    carbs: 350,
+    fat: 90,
+    meals: [
+      { name: 'فطار', foodId: 'f6', quantity: 1.5 },
+      { name: 'فطار', foodId: 'f3', quantity: 4 },
+      { name: 'سناك', foodId: 'f4', quantity: 2 },
+      { name: 'سناك', foodId: 'f10', quantity: 2 },
+      { name: 'غداء', foodId: 'f1', quantity: 2.5 },
+      { name: 'غداء', foodId: 'f2', quantity: 3.5 },
+      { name: 'عشاء', foodId: 'f7', quantity: 2 },
+      { name: 'عشاء', foodId: 'f9', quantity: 2 },
+    ]
+  },
+  {
+    id: 'mp3',
+    name: 'خطة الثبات والتوازن',
+    target: 'ثبات',
+    totalCalories: 2200,
+    protein: 140,
+    carbs: 220,
+    fat: 80,
+    meals: [
+      { name: 'فطار', foodId: 'f3', quantity: 3 },
+      { name: 'فطار', foodId: 'f12', quantity: 2 },
+      { name: 'غداء', foodId: 'f1', quantity: 2 },
+      { name: 'غداء', foodId: 'f2', quantity: 2 },
+      { name: 'سناك', foodId: 'f8', quantity: 1 },
+      { name: 'عشاء', foodId: 'f5', quantity: 2 },
+      { name: 'عشاء', foodId: 'f4', quantity: 1 },
+    ]
+  }
+];

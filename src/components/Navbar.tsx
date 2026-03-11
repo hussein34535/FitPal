@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Flame, UtensilsCrossed, Dumbbell, Settings, User } from 'lucide-react';
+import { Flame, UtensilsCrossed, Dumbbell, Droplet, Clock, BookOpen, BarChart, Bot, Settings, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { clearProfile } from '@/lib/user-store';
 
@@ -11,6 +11,11 @@ const navItems = [
   { path: '/', label: 'السعرات', icon: Flame },
   { path: '/food', label: 'الأكل', icon: UtensilsCrossed },
   { path: '/exercise', label: 'التمارين', icon: Dumbbell },
+  { path: '/coach', label: 'الكابتن', icon: Bot },
+  { path: '/meals', label: 'خطط', icon: BookOpen },
+  { path: '/reports', label: 'تقارير', icon: BarChart },
+  { path: '/water', label: 'المياه', icon: Droplet },
+  { path: '/fasting', label: 'الصيام', icon: Clock },
 ];
 
 export function Navbar({ onReset }: NavbarProps) {
@@ -44,7 +49,7 @@ export function Navbar({ onReset }: NavbarProps) {
         </div>
 
         {/* Main navigation row */}
-        <div className="flex items-center gap-1 pb-3">
+        <div className="flex items-center gap-1 pb-3 overflow-x-auto whitespace-nowrap hide-scrollbar">
           {navItems.map(item => {
             const isActive = location.pathname === item.path;
             const Icon = item.icon;
@@ -53,7 +58,7 @@ export function Navbar({ onReset }: NavbarProps) {
                 key={item.path}
                 onClick={() => navigate(item.path)}
                 className={cn(
-                  'flex items-center gap-2 px-4 py-2 rounded-full text-sm font-display font-bold transition-all duration-300 whitespace-nowrap',
+                  'flex items-center gap-2 px-4 py-2 rounded-full text-sm font-display font-bold transition-all duration-300',
                   isActive
                     ? 'bg-primary text-primary-foreground shadow-lg'
                     : 'text-muted-foreground hover:text-foreground hover:bg-white/5'

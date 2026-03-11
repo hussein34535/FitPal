@@ -9,6 +9,11 @@ import { getProfile } from "@/lib/user-store";
 import Index from "./pages/Index.tsx";
 import FoodPage from "./pages/FoodPage.tsx";
 import ExercisePage from "./pages/ExercisePage.tsx";
+import WaterPage from "./pages/WaterPage.tsx";
+import FastingPage from "./pages/FastingPage.tsx";
+import MealPlansPage from "./pages/MealPlansPage.tsx";
+import ReportsPage from "./pages/ReportsPage.tsx";
+import CoachPage from "./pages/CoachPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -30,6 +35,11 @@ const App = () => {
             <Route path="/" element={<Index key={String(hasProfile)} />} />
             <Route path="/food" element={<FoodPage />} />
             <Route path="/exercise" element={<ExercisePage />} />
+            <Route path="/water" element={<WaterPage />} />
+            <Route path="/fasting" element={<FastingPage />} />
+            <Route path="/meals" element={<MealPlansPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/coach" element={<CoachPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

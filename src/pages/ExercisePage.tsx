@@ -2,9 +2,10 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlassCard } from '@/components/GlassCard';
 import { AnimatedExercise } from '@/components/AnimatedExercise';
-import { getProfile } from '@/lib/user-store';
+import { getProfile, getWorkoutLogs, addWorkoutLog } from '@/lib/user-store';
 import { generateWorkoutPlan, type WorkoutDay, type Exercise } from '@/lib/fitness-data';
-import { ChevronDown, Timer, Dumbbell, AlertTriangle, ListChecks } from 'lucide-react';
+import { ChevronDown, Timer, Dumbbell, AlertTriangle, ListChecks, Save } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function ExercisePage() {
   const profile = getProfile()!;
@@ -12,6 +13,20 @@ export default function ExercisePage() {
   const [selectedDay, setSelectedDay] = useState(0);
   const [expandedExercise, setExpandedExercise] = useState<string | null>(null);
   const [restTimer, setRestTimer] = useState<{ seconds: number; total: number } | null>(null);
+  const [weightInputs, setWeightInputs] = useState<Record<string, string>>({});
+  const [workoutLogs, setWorkoutLogs] = useState(getWorkoutLogs());
+
+  const handleSaveWeight = (exerciseId: string) => {
+    const w = parseFloat(weightInputs[exerciseId]);
+    if (isNaN(w) || w <= 0) {
+      toast.error('أدخل وزن صحيح');
+      return;
+    }
+    addWorkoutLog(exerciseId, w);
+    setWorkoutLogs(getWorkoutLogs());
+    toast.success('تم حفظ الوزن بنجاح!');
+    setWeightInputs(prev => ({ ...prev, [exerciseId]: '' }));
+  };
 
   const currentDay = plan[selectedDay];
 
@@ -173,6 +188,39 @@ export default function ExercisePage() {
                             <div className="glass-panel p-3 rounded-lg">
                               <p className="text-xs text-muted-foreground">راحة</p>
                               <p className="font-display font-extrabold text-lg">{exercise.restSeconds}s</p>
+                            </div>
+                          </div>
+
+                          {/* Weight Tracking */}
+                          <div className="glass-panel rounded-lg p-4 flex flex-col gap-3">
+                            <div className="flex items-center justify-between">
+                              <p className="font-bold text-sm">تسجيل الوزن</p>
+                              {(() => {
+                                const lastLog = [...workoutLogs].reverse().find(l => l.exerciseId === exercise.id);
+                                if (lastLog) {
+                                  return (
+                                    <p className="text-xs text-primary bg-primary/10 px-2 py-1 rounded">
+                                      آخر وزن: {lastLog.weight} kg
+                                    </p>
+                                  );
+                                }
+                                return null;
+                              })()}
+                            </div>
+                            <div className="flex gap-2">
+                              <input 
+                                type="number" 
+                                placeholder="الوزن (kg)" 
+                                className="flex-1 bg-background/50 border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary transition-colors"
+                                value={weightInputs[exercise.id] || ''}
+                                onChange={(e) => setWeightInputs(prev => ({ ...prev, [exercise.id]: e.target.value }))}
+                              />
+                              <button 
+                                onClick={() => handleSaveWeight(exercise.id)}
+                                className="bg-primary text-primary-foreground p-2 rounded-lg flex items-center justify-center hover:brightness-110 active:scale-95 transition-all"
+                              >
+                                <Save className="w-5 h-5" />
+                              </button>
                             </div>
                           </div>
 
