@@ -3,26 +3,43 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { UserProfile } from '@/lib/fitness-data';
 import { saveProfile } from '@/lib/user-store';
 import { GlassCard } from './GlassCard';
-import { User, UserCheck, ArrowLeft, Flame, Scale, Ruler, Activity, Target, Calendar } from 'lucide-react';
+import { User, UserCheck, ArrowLeft, Flame, Scale, Ruler, Activity, Target, Calendar, Sparkles, Loader2 } from 'lucide-react';
+import { getCoachAssessment } from '@/lib/ai-service';
 
 interface OnboardingProps {
   onComplete: () => void;
 }
 
-type Step = 'gender' | 'age' | 'weight' | 'height' | 'goal' | 'activity' | 'trainingDays';
+type Step = 'gender' | 'age' | 'weight' | 'height' | 'goal' | 'activity' | 'trainingDays' | 'assessment';
 
-const stepOrder: Step[] = ['gender', 'age', 'weight', 'height', 'goal', 'activity', 'trainingDays'];
+const stepOrder: Step[] = ['gender', 'age', 'weight', 'height', 'goal', 'activity', 'trainingDays', 'assessment'];
 
 export function Onboarding({ onComplete }: OnboardingProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [profile, setProfile] = useState<Partial<UserProfile>>({});
+  const [assessmentText, setAssessmentText] = useState("");
+  const [isLoadingAssessment, setIsLoadingAssessment] = useState(false);
 
   const step = stepOrder[currentStep];
   const progress = ((currentStep + 1) / stepOrder.length) * 100;
 
-  const next = () => {
+  const next = async () => {
     if (currentStep < stepOrder.length - 1) {
-      setCurrentStep(prev => prev + 1);
+      if (stepOrder[currentStep + 1] === 'assessment') {
+        setIsLoadingAssessment(true);
+        setCurrentStep(prev => prev + 1);
+        try {
+          const text = await getCoachAssessment(profile as UserProfile);
+          setAssessmentText(text);
+        } catch (error) {
+          console.error("Assessment error:", error);
+          setAssessmentText("يا بطل، خطتك جاهزة ويلا بينا نكسر الدنيا! 💪");
+        } finally {
+          setIsLoadingAssessment(false);
+        }
+      } else {
+        setCurrentStep(prev => prev + 1);
+      }
     } else {
       saveProfile(profile as UserProfile);
       onComplete();
@@ -38,6 +55,7 @@ export function Onboarding({ onComplete }: OnboardingProps) {
       case 'goal': return !!profile.goal;
       case 'activity': return !!profile.activityLevel;
       case 'trainingDays': return !!profile.trainingDays;
+      case 'assessment': return !isLoadingAssessment && !!assessmentText;
     }
   };
 
@@ -195,6 +213,36 @@ export function Onboarding({ onComplete }: OnboardingProps) {
                   </GlassCard>
                 ))}
               </div>
+            </StepContainer>
+          )}
+
+          {step === 'assessment' && (
+            <StepContainer 
+              title="تقييم الكابتن" 
+              subtitle="رؤية المدرب لخطتك الرياضية" 
+              icon={<Sparkles className="w-6 h-6" />}
+            >
+              {isLoadingAssessment ? (
+                <div className="flex flex-col items-center justify-center py-10 gap-4">
+                  <Loader2 className="w-10 h-10 text-primary animate-spin" />
+                  <p className="text-muted-foreground animate-pulse text-sm text-center">جاري مراجعة بياناتك وتحليل أهدافك...</p>
+                </div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="space-y-4"
+                >
+                  <GlassCard className="p-6 bg-primary/5 border-primary/20">
+                    <p className="text-foreground leading-relaxed text-lg font-medium whitespace-pre-wrap">
+                      {assessmentText}
+                    </p>
+                  </GlassCard>
+                  <p className="text-xs text-muted-foreground text-center italic">
+                    * هذه الأرقام والتقديرات مبنية على رؤية المدرب الذكي لبياناتك.
+                  </p>
+                </motion.div>
+              )}
             </StepContainer>
           )}
         </motion.div>

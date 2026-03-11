@@ -1,5 +1,5 @@
 import { getProfile, getTodayFoodLog } from "./user-store";
-import { calculateCalories } from "./fitness-data";
+import { calculateCalories, type UserProfile } from "./fitness-data";
 
 export interface ChatMessage {
   role: 'user' | 'assistant' | 'system';
@@ -9,8 +9,8 @@ export interface ChatMessage {
 const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY as string;
 const MODEL = "stepfun/step-3.5-flash:free";
 
-export async function* getCoachStream(message: string, history: ChatMessage[]) {
-  const profile = getProfile();
+export async function* getCoachStream(message: string, history: ChatMessage[], customProfile?: UserProfile) {
+  const profile = customProfile || getProfile();
   const needs = profile ? calculateCalories(profile) : null;
   const foodLog = getTodayFoodLog();
   const consumed = foodLog.reduce((s, l) => s + (l.food.calories * l.quantity), 0);
@@ -77,5 +77,37 @@ export async function* getCoachStream(message: string, history: ChatMessage[]) {
         // skip malformed chunks
       }
     }
+  }
+}
+
+export async function getCoachAssessment(profile: UserProfile): Promise<string> {
+  const prompt = `أنت الكابتن، مدرب رياضي مصري/لبناني متحمس جداً. 
+المستخدم لسه مخلص بياناته وعايزك تقيمه وتديله "مباركته" أو "Assessment" بدقائق قبل ما يبدأ.
+
+بيانات المستخدم:
+- الهدف: ${profile.goal}
+- الوزن: ${profile.weight} كجم
+- الطول: ${profile.height} سم
+- العمر: ${profile.age} سنة
+- مستوى النشاط: ${profile.activityLevel}
+- أيام التمرين: ${profile.trainingDays} أيام في الأسبوع
+
+المطلوب:
+1. حلل البيانات بسرعة (BMI، احتياجه التقريبي).
+2. اديله نصيحة ذهبية بخصوص هدفه (مثلاً لو عايز يخس، قوله ركز على البروتين والشبع، لو ضخامة قوله كبر عضلاتك بالأكل الصح).
+3. خليك "كول" ومحفز جداً. اذكر أرقام محسوبة (السعرات التقريبية) وقوله إنك هتعدلها معاه لو احتاجنا.
+4. الرد لازم يكون باللهجة المصرية/اللبنانية الدارجه، قصير (بحد أقصى 4 جمل)، ومليان تشجيع.
+5. لا تستخدم لغة خشبية ولا تذكر أنك ذكاء اصطناعي.`;
+
+  try {
+    const stream = getCoachStream(prompt, [], profile);
+    let fullText = "";
+    for await (const chunk of stream) {
+      fullText += chunk;
+    }
+    return fullText || "يا بطل، خطتك جاهزة ويلا بينا نكسر الدنيا! 💪";
+  } catch (error) {
+    console.error("Error getting coach assessment:", error);
+    return "يا بطل، حصل مشكلة بسيطة بس مفيش حاجة توقفنا! خطتك جاهزة ويلا بينا نكسر الدنيا! 💪";
   }
 }
