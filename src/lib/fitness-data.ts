@@ -75,374 +75,134 @@ export interface WorkoutDay {
   exercises: Exercise[];
 }
 
-const allExercises: Record<string, Exercise> = {
+export const allExercises: Record<string, Exercise> = {
   benchPress: {
     id: '1', name: 'بنش بريس', sets: 4, reps: '8-10', muscle: 'صدر', restSeconds: 90,
-    instructions: [
-      'استلقِ على البنش مع ثبات القدمين على الأرض',
-      'امسك البار بعرض أوسع قليلاً من الكتفين',
-      'أنزل البار ببطء حتى يلمس منتصف الصدر',
-      'ادفع البار للأعلى بقوة مع الزفير',
-    ],
-    commonMistakes: [
-      'رفع المؤخرة عن البنش أثناء الدفع',
-      'ارتداد البار عن الصدر بدل التحكم',
-      'قفل المرفقين بالكامل في الأعلى',
-      'عدم ثبات لوح الكتف على البنش',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg'
-    ],
+    instructions: ['استلقِ على البنش مع ثبات القدمين على الأرض', 'امسك البار بعرض أوسع قليلاً من الكتفين', 'أنزل البار ببطء حتى يلمس منتصف الصدر', 'ادفع البار للأعلى بقوة مع الزفير'],
+    commonMistakes: ['رفع المؤخرة عن البنش أثناء الدفع', 'ارتداد البار عن الصدر بدل التحكم', 'قفل المرفقين بالكامل في الأعلى'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg']
   },
   inclineDumbbell: {
     id: '2', name: 'بنش مائل بالدمبل', sets: 3, reps: '10-12', muscle: 'صدر علوي', restSeconds: 75,
-    instructions: [
-      'اضبط البنش على زاوية 30-45 درجة',
-      'امسك الدمبلز بجانب الصدر مع ثني المرفقين',
-      'ادفع للأعلى مع تقريب الدمبلز من بعض في القمة',
-      'أنزل ببطء مع التحكم الكامل',
-    ],
-    commonMistakes: [
-      'زاوية البنش عالية جداً (تصبح كتف مش صدر)',
-      'استخدام أوزان ثقيلة بدون تحكم',
-      'عدم إنزال الدمبلز بشكل كافي',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/1.jpg'
-    ],
+    instructions: ['اضبط البنش على زاوية 30-45 درجة', 'امسك الدمبلز بجانب الصدر', 'ادفع للأعلى مع التقريب في القمة'],
+    commonMistakes: ['زاوية البنش عالية جداً', 'استخدام أوزان ثقيلة بدون تحكم'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/1.jpg']
   },
   cableFlyes: {
     id: '3', name: 'كروس أوفر', sets: 3, reps: '12-15', muscle: 'صدر', restSeconds: 60,
-    instructions: [
-      'اضبط البكرات على مستوى أعلى من الكتف',
-      'خذ خطوة للأمام مع ميل الجسم قليلاً',
-      'اسحب الكابلات للأمام بحركة عناق',
-      'ارجع ببطء مع الشعور بالتمدد في الصدر',
-    ],
-    commonMistakes: [
-      'ثني المرفقين كثيراً (تصبح بريس)',
-      'استخدام الجسم كله في السحب',
-      'عدم الضغط في نهاية الحركة',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/1.jpg'
-    ],
+    instructions: ['اضبط البكرات على مستوى أعلى من الكتف', 'اسحب الكابلات للأمام بحركة عناق'],
+    commonMistakes: ['ثني المرفقين كثيراً', 'استخدام الجسم كله في السحب'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/1.jpg']
   },
   overheadPress: {
     id: '4', name: 'أوفرهيد بريس', sets: 4, reps: '8-10', muscle: 'كتف أمامي', restSeconds: 90,
-    instructions: [
-      'قف بثبات مع القدمين بعرض الكتفين',
-      'امسك البار عند مستوى الكتف',
-      'ادفع البار للأعلى فوق الرأس بخط مستقيم',
-      'أنزل ببطء إلى مستوى الكتف',
-    ],
-    commonMistakes: [
-      'تقويس الظهر بشكل مفرط',
-      'دفع البار للأمام بدل فوق الرأس مباشرة',
-      'عدم تثبيت الجذع (Core)',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/1.jpg'
-    ],
+    instructions: ['قف بثبات مع البار عند مستوى الكتف', 'ادفع البار للأعلى فوق الرأس'],
+    commonMistakes: ['تقويس الظهر بشكل مفرط', 'دفع البار للأمام بدل فوق الرأس'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/1.jpg']
   },
   lateralRaise: {
     id: '5', name: 'رفرفة جانبية', sets: 3, reps: '12-15', muscle: 'كتف جانبي', restSeconds: 60,
-    instructions: [
-      'قف مع إمساك الدمبلز بجانب الجسم',
-      'ارفع الذراعين جانبياً حتى مستوى الكتف',
-      'حافظ على ثني خفيف في المرفقين',
-      'أنزل ببطء مع التحكم',
-    ],
-    commonMistakes: [
-      'رفع الأوزان بالزخم بدل العضلة',
-      'رفع الكتفين (الترابس) أثناء الحركة',
-      'الرفع فوق مستوى الكتف',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/1.jpg'
-    ],
+    instructions: ['ارفع الذراعين جانبياً حتى مستوى الكتف', 'حافظ على ثني خفيف في المرفقين'],
+    commonMistakes: ['رفع الأوزان بالزخم', 'الرفع فوق مستوى الكتف'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/1.jpg']
   },
   tricepPushdown: {
     id: '6', name: 'تراي بوش داون', sets: 3, reps: '10-12', muscle: 'تراي', restSeconds: 60,
-    instructions: [
-      'قف أمام الكابل مع إمساك البار أو الحبل',
-      'ثبت المرفقين بجانب الجسم',
-      'ادفع للأسفل حتى استقامة الذراع',
-      'ارجع ببطء دون تحريك المرفقين',
-    ],
-    commonMistakes: [
-      'تحريك المرفقين للأمام والخلف',
-      'الميل بالجسم على الوزن',
-      'عدم الاستقامة الكاملة في الأسفل',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/1.jpg'
-    ],
+    instructions: ['ثبت المرفقين بجانب الجسم', 'ادفع للأسفل حتى استقامة الذراع'],
+    commonMistakes: ['تحريك المرفقين للأمام والخلف', 'الميل بالجسم على الوزن'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/1.jpg']
   },
   deadlift: {
     id: '7', name: 'ديد ليفت', sets: 4, reps: '6-8', muscle: 'ظهر', restSeconds: 120,
-    instructions: [
-      'قف مع القدمين بعرض الوركين والبار فوق منتصف القدم',
-      'انحنِ مع إبقاء الظهر مستقيماً وامسك البار',
-      'ادفع الأرض بقدميك وارفع البار بمحاذاة الجسم',
-      'قف باستقامة تامة ثم أنزل بنفس المسار',
-    ],
-    commonMistakes: [
-      'تقويس الظهر (أخطر خطأ)',
-      'إبعاد البار عن الجسم',
-      'رفع الوركين أسرع من الكتفين',
-      'عدم تفعيل الـ Core',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/1.jpg'
-    ],
+    instructions: ['قف مع البار فوق منتصف القدم', 'ارفع البار بمحاذاة الجسم'],
+    commonMistakes: ['تقويس الظهر', 'إبعاد البار عن الجسم'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/1.jpg']
   },
   pullUp: {
     id: '8', name: 'بول أب', sets: 4, reps: '8-10', muscle: 'ظهر', restSeconds: 90,
-    instructions: [
-      'امسك البار بقبضة أوسع من الكتفين',
-      'تعلق بالكامل مع فرد الذراعين',
-      'اسحب جسمك للأعلى حتى يتجاوز الذقن البار',
-      'أنزل ببطء مع التحكم الكامل',
-    ],
-    commonMistakes: [
-      'التأرجح واستخدام الزخم',
-      'عدم النزول بالكامل (نص حركة)',
-      'إهمال تفعيل عضلات الظهر والاعتماد على الذراعين',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/1.jpg'
-    ],
+    instructions: ['تعلق بالكامل واسحب جسمك للأعلى', 'أنزل ببطء مع التحكم'],
+    commonMistakes: ['التأرجح واستخدام الزخم', 'عدم النزول بالكامل'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/1.jpg']
   },
   barbellRow: {
     id: '9', name: 'تجديف بالبار', sets: 3, reps: '10-12', muscle: 'ظهر وسط', restSeconds: 75,
-    instructions: [
-      'انحنِ للأمام بزاوية 45 درجة مع استقامة الظهر',
-      'امسك البار بعرض الكتفين',
-      'اسحب البار نحو البطن مع ضغط لوحي الكتف',
-      'أنزل ببطء مع الشعور بالتمدد',
-    ],
-    commonMistakes: [
-      'تقويس الظهر',
-      'الوقوف بشكل عمودي تقريباً',
-      'سحب البار للصدر بدل البطن',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/1.jpg'
-    ],
+    instructions: ['انحنِ للأمام بزاوية 45 درجة', 'اسحب البار نحو البطن'],
+    commonMistakes: ['تقويس الظهر', 'سحب البار للصدر بدل البطن'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/1.jpg']
   },
   facePull: {
     id: '10', name: 'فيس بول', sets: 3, reps: '12-15', muscle: 'كتف خلفي', restSeconds: 60,
-    instructions: [
-      'اضبط الكابل على مستوى الوجه',
-      'امسك الحبل بقبضة محايدة',
-      'اسحب نحو الوجه مع فتح المرفقين للخارج',
-      'اضغط على الكتف الخلفي في نهاية الحركة',
-    ],
-    commonMistakes: [
-      'استخدام وزن ثقيل جداً',
-      'سحب الحبل للأسفل بدل مستوى الوجه',
-      'عدم فتح المرفقين للخارج',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/1.jpg'
-    ],
+    instructions: ['اسحب نحو الوجه مع فتح المرفقين للخارج', 'اضغط على الكتف الخلفي'],
+    commonMistakes: ['استخدم وزن ثقيل جداً', 'عدم فتح المرفقين للخارج'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Face_Pull/1.jpg']
   },
   barbellCurl: {
     id: '11', name: 'باي بالبار', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
-    instructions: [
-      'قف باستقامة مع إمساك البار بعرض الكتفين',
-      'ثبت المرفقين بجانب الجسم',
-      'ارفع البار بانقباض الباي فقط',
-      'أنزل ببطء مع مقاومة الجاذبية',
-    ],
-    commonMistakes: [
-      'تأرجح الجسم للمساعدة في الرفع',
-      'تحريك المرفقين للأمام',
-      'إنزال الوزن بسرعة بدون تحكم',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/1.jpg'
-    ],
+    instructions: ['ثبت المرفقين وارفع البار بانقباض الباي', 'أنزل ببطء مع المقاومة'],
+    commonMistakes: ['تأرجح الجسم', 'تحريك المرفقين للأمام'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/1.jpg']
   },
   hammerCurl: {
     id: '12', name: 'هامر كيرل', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
-    instructions: [
-      'امسك الدمبلز بقبضة محايدة (الإبهام للأعلى)',
-      'ارفع الدمبل بانقباض الباي مع ثبات المرفق',
-      'يمكنك التبديل أو رفع الاثنين معاً',
-      'أنزل ببطء مع التحكم',
-    ],
-    commonMistakes: [
-      'تدوير المعصم أثناء الرفع',
-      'استخدام الكتف في الرفع',
-      'سرعة الحركة الزائدة',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/1.jpg'
-    ],
+    instructions: ['امسك الدمبلز بقبضة محايدة', 'ارفع الدمبل بانقباض الباي'],
+    commonMistakes: ['تدوير المعصم', 'استخدام الزخم'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/1.jpg']
   },
   squat: {
     id: '13', name: 'سكوات', sets: 4, reps: '8-10', muscle: 'أرجل', restSeconds: 120,
-    instructions: [
-      'ضع البار على الترابس الخلفي (ليس الرقبة)',
-      'القدمين بعرض أوسع قليلاً من الكتفين',
-      'انزل حتى يصبح الفخذ موازياً للأرض أو أقل',
-      'ادفع الأرض بكعبك للوقوف',
-    ],
-    commonMistakes: [
-      'الركبة تتجاوز أصابع القدم بشكل مفرط',
-      'رفع الكعب عن الأرض',
-      'تقويس الظهر في الأسفل (Butt Wink)',
-      'عدم النزول بالعمق الكافي',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/1.jpg'
-    ],
+    instructions: ['انزل حتى يصبح الفخذ موازياً للأرض', 'ادفع الأرض بكعبك للوقوف'],
+    commonMistakes: ['رفع الكعب عن الأرض', 'تقويس الظهر في الأسفل'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/1.jpg']
   },
   legPress: {
     id: '14', name: 'ليج بريس', sets: 4, reps: '10-12', muscle: 'أرجل', restSeconds: 90,
-    instructions: [
-      'اجلس في الجهاز مع ثبات الظهر على المسند',
-      'ضع القدمين بعرض الكتفين على المنصة',
-      'أنزل المنصة ببطء حتى زاوية 90 درجة في الركبة',
-      'ادفع للأعلى بدون قفل الركبتين',
-    ],
-    commonMistakes: [
-      'قفل الركبتين بالكامل (خطير جداً)',
-      'رفع المؤخرة عن المقعد',
-      'وضع القدمين ضيق جداً',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/1.jpg'
-    ],
+    instructions: ['أنزل المنصة ببطء حتى زاوية 90 درجة', 'ادفع للأعلى بدون قفل الركبة'],
+    commonMistakes: ['قفل الركبة في الأعلى', 'رفع المؤخرة عن المقعد'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/1.jpg']
   },
   lunges: {
     id: '15', name: 'لانجز', sets: 3, reps: '10 لكل رجل', muscle: 'أرجل', restSeconds: 75,
-    instructions: [
-      'قف باستقامة مع دمبلز في كل يد',
-      'خذ خطوة واسعة للأمام',
-      'انزل حتى تلامس الركبة الخلفية الأرض تقريباً',
-      'ادفع بالقدم الأمامية للرجوع',
-    ],
-    commonMistakes: [
-      'خطوة قصيرة جداً (ضغط على الركبة)',
-      'ميل الجسم للأمام',
-      'عدم التوازن الجانبي',
-    ],
+    instructions: ['خذ خطوة واسعة للأمام', 'انزل حتى تلامس الركبة الخلفية الأرض'],
+    commonMistakes: ['خطوة قصيرة جداً', 'عدم التوزان'],
   },
   legCurl: {
     id: '16', name: 'ليج كيرل', sets: 3, reps: '10-12', muscle: 'خلفية', restSeconds: 60,
-    instructions: [
-      'استلقِ على جهاز الليج كيرل',
-      'ثبت الوسادة فوق الكعب',
-      'اثنِ الركبة واسحب الوسادة نحو المؤخرة',
-      'ارجع ببطء مع المقاومة',
-    ],
-    commonMistakes: [
-      'رفع الوركين عن المقعد',
-      'استخدام الزخم بدل العضلة',
-      'حركة جزئية (نص الحركة)',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/1.jpg'
-    ],
+    instructions: ['اثنِ الركبة واسحب الوسادة نحو المؤخرة', 'ارجع ببطء مع المقاومة'],
+    commonMistakes: ['رفع الوركين عن المقعد', 'سرعة الحركة'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/1.jpg']
   },
   legExtension: {
     id: '17', name: 'ليج اكستنشن', sets: 3, reps: '12-15', muscle: 'أمامية', restSeconds: 60,
-    instructions: [
-      'اجلس في الجهاز مع ثبات الظهر',
-      'ضع الوسادة فوق مقدمة القدم',
-      'افرد الركبة للأعلى بالكامل',
-      'أنزل ببطء مع التحكم',
-    ],
-    commonMistakes: [
-      'الحركة السريعة بدون تحكم',
-      'عدم الفرد الكامل للركبة في الأعلى',
-      'استخدام وزن ثقيل مع حركة جزئية',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/1.jpg'
-    ],
+    instructions: ['افرد الركبة للأعلى بالكامل', 'أنزل ببطء مع التحكم'],
+    commonMistakes: ['الحركة السريعة', 'استخدام وزن ثقيل مع حركة جزئية'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/1.jpg']
   },
   calfRaise: {
     id: '18', name: 'كاف ريز', sets: 4, reps: '15-20', muscle: 'سمانة', restSeconds: 45,
-    instructions: [
-      'قف على حافة درجة أو جهاز السمانة',
-      'ارفع جسمك على أطراف أصابعك',
-      'اضغط في القمة لثانية',
-      'أنزل ببطء حتى تشعر بالتمدد',
-    ],
-    commonMistakes: [
-      'حركة سريعة بدون ضغط',
-      'عدم النزول بالكامل للتمدد',
-      'ثني الركبتين أثناء الحركة',
-    ],
-    images: [
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg',
-      'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/1.jpg'
-    ],
+    instructions: ['ارفع جسمك على أطراف أصابعك', 'أنزل ببطء حتى تشعر بالتمدد'],
+    commonMistakes: ['حركة سريعة بدون ضغط', 'عدم النزول بالكامل'],
+    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/1.jpg']
   },
 };
 
 export function generateWorkoutPlan(profile: UserProfile): WorkoutDay[] {
-  const push = Object.values(allExercises).filter(e => ['1','2','3','4','5','6'].includes(e.id));
-  const pull = Object.values(allExercises).filter(e => ['7','8','9','10','11','12'].includes(e.id));
-  const legs = Object.values(allExercises).filter(e => ['13','14','15','16','17','18'].includes(e.id));
+  const push = [allExercises.benchPress, allExercises.inclineDumbbell, allExercises.cableFlyes, allExercises.overheadPress, allExercises.lateralRaise, allExercises.tricepPushdown];
+  const pull = [allExercises.deadlift, allExercises.pullUp, allExercises.barbellRow, allExercises.facePull, allExercises.barbellCurl, allExercises.hammerCurl];
+  const legs = [allExercises.squat, allExercises.legPress, allExercises.lunges, allExercises.legCurl, allExercises.legExtension, allExercises.calfRaise];
 
   const days = profile.trainingDays || 6;
-
   if (days === 3) {
-    return [
-      { day: 'السبت', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-      { day: 'الاثنين', name: 'سحب (ظهر + باي)', exercises: pull },
-      { day: 'الأربعاء', name: 'أرجل', exercises: legs },
-    ];
+    return [{ day: 'السبت', name: 'دفع', exercises: push }, { day: 'الاثنين', name: 'سحب', exercises: pull }, { day: 'الأربعاء', name: 'أرجل', exercises: legs }];
   }
-
   if (days === 4) {
-    return [
-      { day: 'السبت', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-      { day: 'الأحد', name: 'سحب (ظهر + باي)', exercises: pull },
-      { day: 'الثلاثاء', name: 'أرجل', exercises: legs },
-      { day: 'الخميس', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-    ];
+    return [{ day: 'السبت', name: 'دفع', exercises: push }, { day: 'الأحد', name: 'سحب', exercises: pull }, { day: 'الثلاثاء', name: 'أرجل', exercises: legs }, { day: 'الخميس', name: 'دفع', exercises: push }];
   }
-
   if (days === 5) {
-    return [
-      { day: 'السبت', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-      { day: 'الأحد', name: 'سحب (ظهر + باي)', exercises: pull },
-      { day: 'الاثنين', name: 'أرجل', exercises: legs },
-      { day: 'الأربعاء', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-      { day: 'الخميس', name: 'سحب (ظهر + باي)', exercises: pull },
-    ];
+    return [{ day: 'السبت', name: 'دفع', exercises: push }, { day: 'الأحد', name: 'سحب', exercises: pull }, { day: 'الاثنين', name: 'أرجل', exercises: legs }, { day: 'الأربعاء', name: 'دفع', exercises: push }, { day: 'الخميس', name: 'سحب', exercises: pull }];
   }
-
-  // 6 days (default)
   return [
-    { day: 'السبت', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-    { day: 'الأحد', name: 'سحب (ظهر + باي)', exercises: pull },
-    { day: 'الاثنين', name: 'أرجل', exercises: legs },
-    { day: 'الأربعاء', name: 'دفع (صدر + كتف + تراي)', exercises: push },
-    { day: 'الخميس', name: 'سحب (ظهر + باي)', exercises: pull },
-    { day: 'الجمعة', name: 'أرجل', exercises: legs },
+    { day: 'السبت', name: 'دفع', exercises: push }, { day: 'الأحد', name: 'سحب', exercises: pull }, { day: 'الاثنين', name: 'أرجل', exercises: legs },
+    { day: 'الأربعاء', name: 'دفع', exercises: push }, { day: 'الخميس', name: 'سحب', exercises: pull }, { day: 'الجمعة', name: 'أرجل', exercises: legs }
   ];
 }
 
@@ -459,17 +219,26 @@ export interface FoodItem {
 
 export const foodDatabase: FoodItem[] = [
   { id: 'f1', name: 'صدر دجاج مشوي (100g)', calories: 165, protein: 31, carbs: 0, fat: 3.6, fiber: 0, category: 'بروتين' },
-  { id: 'f2', name: 'أرز أبيض مطبوخ (100g)', calories: 130, protein: 2.7, carbs: 28, fat: 0.3, fiber: 0.4, category: 'كربوهيدرات' },
-  { id: 'f3', name: 'بيض مسلوق (حبة)', calories: 78, protein: 6, carbs: 0.6, fat: 5, fiber: 0, category: 'بروتين' },
-  { id: 'f4', name: 'موزة متوسطة', calories: 105, protein: 1.3, carbs: 27, fat: 0.3, fiber: 3.1, category: 'فواكه' },
-  { id: 'f5', name: 'زبادي يوناني (100g)', calories: 59, protein: 10, carbs: 3.6, fat: 0.7, fiber: 0, category: 'ألبان' },
-  { id: 'f6', name: 'شوفان (100g)', calories: 389, protein: 16.9, carbs: 66, fat: 6.9, fiber: 10.6, category: 'كربوهيدرات' },
   { id: 'f7', name: 'سلمون مشوي (100g)', calories: 208, protein: 20, carbs: 0, fat: 13, fiber: 0, category: 'بروتين' },
-  { id: 'f8', name: 'أفوكادو (100g)', calories: 160, protein: 2, carbs: 9, fat: 15, fiber: 6.7, category: 'دهون صحية' },
-  { id: 'f9', name: 'بطاطا حلوة مشوية (100g)', calories: 90, protein: 2, carbs: 21, fat: 0.1, fiber: 3, category: 'كربوهيدرات' },
-  { id: 'f10', name: 'لوز (30g)', calories: 170, protein: 6, carbs: 6, fat: 15, fiber: 3.5, category: 'مكسرات' },
+  { id: 'f3', name: 'بيض مسلوق (حبة)', calories: 78, protein: 6, carbs: 0.6, fat: 5, fiber: 0, category: 'بروتين' },
   { id: 'f11', name: 'تونة معلبة (100g)', calories: 116, protein: 26, carbs: 0, fat: 1, fiber: 0, category: 'بروتين' },
+  { id: 'f5', name: 'زبادي يوناني (100g)', calories: 59, protein: 10, carbs: 3.6, fat: 0.7, fiber: 0, category: 'ألبان' },
+  { id: 'f13', name: 'فول مدمس (100g)', calories: 110, protein: 8, carbs: 20, fat: 0.5, fiber: 7, category: 'بروتين نباتي' },
+  { id: 'f14', name: 'طعمية (حبة متوسطة)', calories: 80, protein: 3, carbs: 8, fat: 4, fiber: 2, category: 'بروتين نباتي' },
+  { id: 'f2', name: 'أرز أبيض مطبوخ (100g)', calories: 130, protein: 2.7, carbs: 28, fat: 0.3, fiber: 0.4, category: 'كربوهيدرات' },
+  { id: 'f6', name: 'شوفان (100g)', calories: 389, protein: 16.9, carbs: 66, fat: 6.9, fiber: 10.6, category: 'كربوهيدرات' },
+  { id: 'f9', name: 'بطاطا حلوة مشوية (100g)', calories: 90, protein: 2, carbs: 21, fat: 0.1, fiber: 3, category: 'كربوهيدرات' },
   { id: 'f12', name: 'خبز أسمر (شريحة)', calories: 69, protein: 3.6, carbs: 12, fat: 1, fiber: 1.9, category: 'كربوهيدرات' },
+  { id: 'f15', name: 'مكرونة مسلوقة (100g)', calories: 131, protein: 5, carbs: 25, fat: 1.1, fiber: 1.2, category: 'كربوهيدرات' },
+  { id: 'f16', name: 'رغيف عيش بلدي', calories: 250, protein: 8, carbs: 50, fat: 1.5, fiber: 4, category: 'كربوهيدرات' },
+  { id: 'f4', name: 'موزة متوسطة', calories: 105, protein: 1.3, carbs: 27, fat: 0.3, fiber: 3.1, category: 'فواكه' },
+  { id: 'f17', name: 'تفاحة متوسطة', calories: 95, protein: 0.5, carbs: 25, fat: 0.3, fiber: 4.4, category: 'فواكه' },
+  { id: 'f18', name: 'خيار (100g)', calories: 15, protein: 0.6, carbs: 3.6, fat: 0.1, fiber: 0.5, category: 'خضروات' },
+  { id: 'f19', name: 'طماطم (100g)', calories: 18, protein: 0.9, carbs: 3.9, fat: 0.2, fiber: 1.2, category: 'خضروات' },
+  { id: 'f20', name: 'سبانخ مطبوخة (100g)', calories: 23, protein: 3, carbs: 4, fat: 0.4, fiber: 2.4, category: 'خضروات' },
+  { id: 'f8', name: 'أفوكادو (100g)', calories: 160, protein: 2, carbs: 9, fat: 15, fiber: 6.7, category: 'دهون صحية' },
+  { id: 'f10', name: 'لوز (30g)', calories: 170, protein: 6, carbs: 6, fat: 15, fiber: 3.5, category: 'مكسرات' },
+  { id: 'f21', name: 'زيت زيتون (ملعقة كبيرة)', calories: 120, protein: 0, carbs: 0, fat: 14, fiber: 0, category: 'دهون صحية' },
 ];
 
 export interface MealPlan {
@@ -480,66 +249,10 @@ export interface MealPlan {
   protein: number;
   carbs: number;
   fat: number;
-  meals: {
-    name: string;
-    foodId: string;
-    quantity: number;
-  }[];
+  meals: { name: string; foodId: string; quantity: number; }[];
 }
 
 export const mealPlans: MealPlan[] = [
-  {
-    id: 'mp1',
-    name: 'خطة التنشيف المتقدمة',
-    target: 'تنشيف',
-    totalCalories: 1500,
-    protein: 150,
-    carbs: 100,
-    fat: 55,
-    meals: [
-      { name: 'فطار', foodId: 'f6', quantity: 0.5 },
-      { name: 'فطار', foodId: 'f5', quantity: 1.5 },
-      { name: 'غداء', foodId: 'f1', quantity: 2 },
-      { name: 'غداء', foodId: 'f2', quantity: 1 },
-      { name: 'سناك', foodId: 'f4', quantity: 1 },
-      { name: 'عشاء', foodId: 'f11', quantity: 1.5 },
-    ]
-  },
-  {
-    id: 'mp2',
-    name: 'ضخامة عضلية نظيفة',
-    target: 'ضخامة',
-    totalCalories: 3000,
-    protein: 180,
-    carbs: 350,
-    fat: 90,
-    meals: [
-      { name: 'فطار', foodId: 'f6', quantity: 1.5 },
-      { name: 'فطار', foodId: 'f3', quantity: 4 },
-      { name: 'سناك', foodId: 'f4', quantity: 2 },
-      { name: 'سناك', foodId: 'f10', quantity: 2 },
-      { name: 'غداء', foodId: 'f1', quantity: 2.5 },
-      { name: 'غداء', foodId: 'f2', quantity: 3.5 },
-      { name: 'عشاء', foodId: 'f7', quantity: 2 },
-      { name: 'عشاء', foodId: 'f9', quantity: 2 },
-    ]
-  },
-  {
-    id: 'mp3',
-    name: 'خطة الثبات والتوازن',
-    target: 'ثبات',
-    totalCalories: 2200,
-    protein: 140,
-    carbs: 220,
-    fat: 80,
-    meals: [
-      { name: 'فطار', foodId: 'f3', quantity: 3 },
-      { name: 'فطار', foodId: 'f12', quantity: 2 },
-      { name: 'غداء', foodId: 'f1', quantity: 2 },
-      { name: 'غداء', foodId: 'f2', quantity: 2 },
-      { name: 'سناك', foodId: 'f8', quantity: 1 },
-      { name: 'عشاء', foodId: 'f5', quantity: 2 },
-      { name: 'عشاء', foodId: 'f4', quantity: 1 },
-    ]
-  }
+  { id: 'mp1', name: 'تنشيف متقدم', target: 'تنشيف', totalCalories: 1500, protein: 150, carbs: 100, fat: 55, meals: [{ name: 'فطار', foodId: 'f6', quantity: 0.5 }, { name: 'غداء', foodId: 'f1', quantity: 2 }] },
+  { id: 'mp2', name: 'ضخامة نظيفة', target: 'ضخامة', totalCalories: 3000, protein: 180, carbs: 350, fat: 90, meals: [{ name: 'فطار', foodId: 'f6', quantity: 1.5 }, { name: 'غداء', foodId: 'f1', quantity: 2.5 }] },
 ];

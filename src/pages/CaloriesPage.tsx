@@ -6,7 +6,8 @@ import { CircularProgress } from '@/components/CircularProgress';
 import { getProfile, getTodayFoodLog } from '@/lib/user-store';
 import { calculateCalories, calculateBMI } from '@/lib/fitness-data';
 import { cn } from '@/lib/utils';
-import { Activity, Target, Scale, Zap, Info, Plus, ChevronRight, Calculator, PieChart, Utensils } from 'lucide-react';
+import { Activity, Target, Scale, Zap, Info, Plus, ChevronRight, Calculator, PieChart, Utensils, Trophy } from 'lucide-react';
+import { AchievementsDisplay } from '@/components/AchievementsDisplay';
 
 export default function CaloriesPage() {
   const profile = getProfile()!;
@@ -42,6 +43,22 @@ export default function CaloriesPage() {
     month: 'long',
     year: 'numeric'
   });
+
+  const groupedLogs = useMemo(() => {
+    return {
+      breakfast: todayLog.filter(l => l.mealType === 'breakfast'),
+      lunch: todayLog.filter(l => l.mealType === 'lunch'),
+      dinner: todayLog.filter(l => l.mealType === 'dinner'),
+      snack: todayLog.filter(l => l.mealType === 'snack'),
+    };
+  }, [todayLog]);
+
+  const MEAL_LABELS = {
+    breakfast: { label: 'فطار', emoji: '🍳' },
+    lunch: { label: 'غداء', emoji: '🥘' },
+    dinner: { label: 'عشاء', emoji: '🥗' },
+    snack: { label: 'سناك', emoji: '🍎' },
+  };
 
   return (
     <motion.div
@@ -94,6 +111,15 @@ export default function CaloriesPage() {
         </GlassCard>
       </section>
 
+      {/* Achievements Section */}
+      <section className="space-y-3">
+        <h2 className="font-display font-extrabold text-lg flex items-center gap-2 px-1">
+          <Trophy className="w-4 h-4 text-primary" />
+          الإنجازات والمستوى
+        </h2>
+        <AchievementsDisplay />
+      </section>
+
       {/* Main Consumption Section */}
       <section className="space-y-3">
         <h2 className="font-display font-extrabold text-lg flex items-center gap-2 px-1">
@@ -144,12 +170,6 @@ export default function CaloriesPage() {
           </button>
         </div>
 
-        <h3 className="font-display font-bold text-muted-foreground text-sm uppercase tracking-widest flex items-center gap-2 px-1">
-          <span>الوجبات</span>
-          <span className="h-[1px] flex-1 bg-white/5" />
-          <span className="text-primary">{consumed.calories} سعرة</span>
-        </h3>
-
         {todayLog.length === 0 ? (
           <GlassCard className="p-12 text-center border-dashed border-white/10 opacity-60">
             <Utensils className="w-10 h-10 mx-auto mb-4 text-muted-foreground opacity-20" />
@@ -163,23 +183,40 @@ export default function CaloriesPage() {
             </button>
           </GlassCard>
         ) : (
-          <div className="space-y-3">
-            {todayLog.map((item, idx) => (
-              <GlassCard key={idx} className="p-4 flex items-center justify-between group hover:border-primary/30 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-lg">
-                    {item.food.category === 'بروتين' ? '🍗' : item.food.category === 'فواكه' ? '🍎' : '🥗'}
+          <div className="space-y-6">
+            {(Object.entries(groupedLogs) as [keyof typeof groupedLogs, any[]][]).map(([type, logs]) => (
+              logs.length > 0 && (
+                <div key={type} className="space-y-3">
+                  <div className="flex items-center gap-2 px-1">
+                    <span className="text-sm">{MEAL_LABELS[type].emoji}</span>
+                    <h3 className="font-display font-bold text-muted-foreground text-xs uppercase tracking-widest flex-1">
+                      {MEAL_LABELS[type].label}
+                    </h3>
+                    <span className="text-[10px] font-bold text-primary">
+                      {logs.reduce((s, l) => s + Math.round(l.food.calories * l.quantity), 0)} سعرة
+                    </span>
                   </div>
-                  <div>
-                    <h4 className="font-display font-bold text-sm">{item.food.name}</h4>
-                    <p className="text-[10px] text-muted-foreground">كمية: {item.quantity}</p>
+                  <div className="space-y-2">
+                    {logs.map((item, idx) => (
+                      <GlassCard key={idx} className="p-4 flex items-center justify-between group hover:border-primary/30 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg glass-panel flex items-center justify-center text-lg">
+                            {item.food.category === 'بروتين' ? '🍗' : item.food.category === 'فواكه' ? '🍎' : '🥗'}
+                          </div>
+                          <div>
+                            <h4 className="font-display font-bold text-sm">{item.food.name}</h4>
+                            <p className="text-[10px] text-muted-foreground">كمية: {item.quantity}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="font-display font-black text-primary">{Math.round(item.food.calories * item.quantity)}</p>
+                          <p className="text-[9px] text-muted-foreground font-bold">سعرة</p>
+                        </div>
+                      </GlassCard>
+                    ))}
                   </div>
                 </div>
-                <div className="text-right">
-                  <p className="font-display font-black text-primary">{Math.round(item.food.calories * item.quantity)}</p>
-                  <p className="text-[9px] text-muted-foreground font-bold">سعرة</p>
-                </div>
-              </GlassCard>
+              )
             ))}
           </div>
         )}
@@ -224,4 +261,3 @@ function MacroProgress({ label, current, target, color }: { label: string; curre
     </div>
   );
 }
-

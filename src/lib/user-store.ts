@@ -29,6 +29,7 @@ export interface LoggedFood {
   food: FoodItem;
   quantity: number;
   timestamp: number;
+  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
 }
 
 export function getTodayFoodLog(): LoggedFood[] {
@@ -39,11 +40,12 @@ export function getTodayFoodLog(): LoggedFood[] {
   return all.filter(f => new Date(f.timestamp).toDateString() === today);
 }
 
-export function addFoodToLog(food: FoodItem, quantity: number) {
+export function addFoodToLog(food: FoodItem, quantity: number, mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack' = 'breakfast') {
   const data = localStorage.getItem(FOOD_LOG_KEY);
   const all: LoggedFood[] = data ? JSON.parse(data) : [];
-  all.push({ food, quantity, timestamp: Date.now() });
+  all.push({ food, quantity, timestamp: Date.now(), mealType });
   localStorage.setItem(FOOD_LOG_KEY, JSON.stringify(all));
+  addXP(10);
 }
 
 export function removeFoodFromLog(timestamp: number) {
@@ -73,6 +75,7 @@ export function addWater(amountMl: number) {
   const all: WaterLog[] = data ? JSON.parse(data) : [];
   all.push({ amountMl, timestamp: Date.now() });
   localStorage.setItem(WATER_LOG_KEY, JSON.stringify(all));
+  addXP(5);
 }
 
 // --- INTERMITTENT FASTING ---
@@ -111,6 +114,7 @@ export function addWorkoutLog(exerciseId: string, weight: number) {
   const all: WorkoutLog[] = data ? JSON.parse(data) : [];
   all.push({ exerciseId, weight, timestamp: Date.now() });
   localStorage.setItem(WORKOUT_LOG_KEY, JSON.stringify(all));
+  addXP(20);
 }
 
 // --- ACHIEVEMENTS & XP ---
