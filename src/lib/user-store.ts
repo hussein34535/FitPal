@@ -5,6 +5,7 @@ const FOOD_LOG_KEY = 'fitpal_food_log';
 const WATER_LOG_KEY = 'fitpal_water_log';
 const FASTING_LOG_KEY = 'fitpal_fasting_log';
 const WORKOUT_LOG_KEY = 'fitpal_workout_log';
+const USER_STATS_KEY = 'fitpal_user_stats';
 
 export function saveProfile(profile: UserProfile) {
   localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
@@ -21,6 +22,7 @@ export function clearProfile() {
   localStorage.removeItem(WATER_LOG_KEY);
   localStorage.removeItem(FASTING_LOG_KEY);
   localStorage.removeItem(WORKOUT_LOG_KEY);
+  localStorage.removeItem(USER_STATS_KEY);
 }
 
 export interface LoggedFood {
@@ -109,4 +111,55 @@ export function addWorkoutLog(exerciseId: string, weight: number) {
   const all: WorkoutLog[] = data ? JSON.parse(data) : [];
   all.push({ exerciseId, weight, timestamp: Date.now() });
   localStorage.setItem(WORKOUT_LOG_KEY, JSON.stringify(all));
+}
+
+// --- ACHIEVEMENTS & XP ---
+export interface UserStats {
+  xp: number;
+  level: number;
+  streak: number;
+  lastLoginDate: string;
+}
+
+export function getUserStats(): UserStats {
+  const data = localStorage.getItem(USER_STATS_KEY);
+  const defaultStats: UserStats = { xp: 0, level: 1, streak: 0, lastLoginDate: '' };
+  
+  if (!data) return defaultStats;
+  
+  const stats = JSON.parse(data);
+  const today = new Date().toDateString();
+  
+  // Calculate Streak
+  if (stats.lastLoginDate !== today) {
+    const lastDate = new Date(stats.lastLoginDate);
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    if (lastDate.toDateString() === yesterday.toDateString()) {
+      stats.streak += 1;
+    } else if (stats.lastLoginDate !== '') {
+      stats.streak = 1;
+    } else {
+      stats.streak = 1;
+    }
+    stats.lastLoginDate = today;
+    localStorage.setItem(USER_STATS_KEY, JSON.stringify(stats));
+  }
+  
+  return stats;
+}
+
+export function addXP(amount: number) {
+  const stats = getUserStats();
+  stats.xp += amount;
+  
+  // XP formula: Level * 100
+  const nextLevelXP = stats.level * 100;
+  if (stats.xp >= nextLevelXP) {
+    stats.xp -= nextLevelXP;
+    stats.level += 1;
+  }
+  
+  localStorage.setItem(USER_STATS_KEY, JSON.stringify(stats));
 }
