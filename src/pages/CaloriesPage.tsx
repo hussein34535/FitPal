@@ -134,11 +134,12 @@ export default function CaloriesPage() {
                 max={macros.calories}
                 size={160}
                 strokeWidth={12}
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
-                <span className="font-display text-3xl font-black">{remaining > 0 ? remaining : 0}</span>
-                <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">سعرة متبقية</span>
-              </div>
+              >
+                <div className="flex flex-col items-center justify-center pt-2">
+                  <span className="font-display text-3xl font-black">{remaining > 0 ? remaining : 0}</span>
+                  <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">سعرة متبقية</span>
+                </div>
+              </CircularProgress>
             </div>
             
             <div className="flex-1 w-full grid grid-cols-2 gap-4">
