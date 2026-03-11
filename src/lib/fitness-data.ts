@@ -80,55 +80,55 @@ export const allExercises: Record<string, Exercise> = {
     id: '1', name: 'بنش بريس', sets: 4, reps: '8-10', muscle: 'صدر', restSeconds: 90,
     instructions: ['استلقِ على البنش مع ثبات القدمين على الأرض', 'امسك البار بعرض أوسع قليلاً من الكتفين', 'أنزل البار ببطء حتى يلمس منتصف الصدر', 'ادفع البار للأعلى بقوة مع الزفير'],
     commonMistakes: ['رفع المؤخرة عن البنش أثناء الدفع', 'ارتداد البار عن الصدر بدل التحكم', 'قفل المرفقين بالكامل في الأعلى'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bench_Press_-_Medium_Grip/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0025.gif']
   },
   inclineDumbbell: {
     id: '2', name: 'بنش مائل بالدمبل', sets: 3, reps: '10-12', muscle: 'صدر علوي', restSeconds: 75,
     instructions: ['اضبط البنش على زاوية 30-45 درجة', 'امسك الدمبلز بجانب الصدر', 'ادفع للأعلى مع التقريب في القمة'],
     commonMistakes: ['زاوية البنش عالية جداً', 'استخدام أوزان ثقيلة بدون تحكم'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Incline_Dumbbell_Bench_With_Palms_Facing_In/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0504.gif']
   },
   cableFlyes: {
     id: '3', name: 'كروس أوفر', sets: 3, reps: '12-15', muscle: 'صدر', restSeconds: 60,
     instructions: ['اضبط البكرات على مستوى أعلى من الكتف', 'اسحب الكابلات للأمام بحركة عناق'],
     commonMistakes: ['ثني المرفقين كثيراً', 'استخدام الجسم كله في السحب'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Crossover/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0161.gif']
   },
   overheadPress: {
     id: '4', name: 'أوفرهيد بريس', sets: 4, reps: '8-10', muscle: 'كتف أمامي', restSeconds: 90,
     instructions: ['قف بثبات مع البار عند مستوى الكتف', 'ادفع البار للأعلى فوق الرأس'],
     commonMistakes: ['تقويس الظهر بشكل مفرط', 'دفع البار للأمام بدل فوق الرأس'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Smith_Machine_Overhead_Shoulder_Press/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0765.gif']
   },
   lateralRaise: {
     id: '5', name: 'رفرفة جانبية', sets: 3, reps: '12-15', muscle: 'كتف جانبي', restSeconds: 60,
     instructions: ['ارفع الذراعين جانبياً حتى مستوى الكتف', 'حافظ على ثني خفيف في المرفقين'],
     commonMistakes: ['رفع الأوزان بالزخم', 'الرفع فوق مستوى الكتف'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cable_Seated_Lateral_Raise/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0212.gif']
   },
   tricepPushdown: {
     id: '6', name: 'تراي بوش داون', sets: 3, reps: '10-12', muscle: 'تراي', restSeconds: 60,
     instructions: ['ثبت المرفقين بجانب الجسم', 'ادفع للأسفل حتى استقامة الذراع'],
     commonMistakes: ['تحريك المرفقين للأمام والخلف', 'الميل بالجسم على الوزن'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Reverse_Grip_Triceps_Pushdown/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/1210.gif']
   },
   deadlift: {
     id: '7', name: 'ديد ليفت', sets: 4, reps: '6-8', muscle: 'ظهر', restSeconds: 120,
     instructions: ['قف مع البار فوق منتصف القدم', 'ارفع البار بمحاذاة الجسم'],
     commonMistakes: ['تقويس الظهر', 'إبعاد البار عن الجسم'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Deadlift/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0032.gif']
   },
   pullUp: {
     id: '8', name: 'بول أب', sets: 4, reps: '8-10', muscle: 'ظهر', restSeconds: 90,
     instructions: ['تعلق بالكامل واسحب جسمك للأعلى', 'أنزل ببطء مع التحكم'],
     commonMistakes: ['التأرجح واستخدام الزخم', 'عدم النزول بالكامل'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pullups/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0652.gif']
   },
   barbellRow: {
     id: '9', name: 'تجديف بالبار', sets: 3, reps: '10-12', muscle: 'ظهر وسط', restSeconds: 75,
     instructions: ['انحنِ للأمام بزاوية 45 درجة', 'اسحب البار نحو البطن'],
     commonMistakes: ['تقويس الظهر', 'سحب البار للصدر بدل البطن'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Bent_Over_Row/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0027.gif']
   },
   facePull: {
     id: '10', name: 'فيس بول', sets: 3, reps: '12-15', muscle: 'كتف خلفي', restSeconds: 60,
@@ -140,25 +140,25 @@ export const allExercises: Record<string, Exercise> = {
     id: '11', name: 'باي بالبار', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
     instructions: ['ثبت المرفقين وارفع البار بانقباض الباي', 'أنزل ببطء مع المقاومة'],
     commonMistakes: ['تأرجح الجسم', 'تحريك المرفقين للأمام'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Curl/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0285.gif']
   },
   hammerCurl: {
     id: '12', name: 'هامر كيرل', sets: 3, reps: '10-12', muscle: 'باي', restSeconds: 60,
     instructions: ['امسك الدمبلز بقبضة محايدة', 'ارفع الدمبل بانقباض الباي'],
     commonMistakes: ['تدوير المعصم', 'استخدام الزخم'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Hammer_Curl/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0313.gif']
   },
   squat: {
     id: '13', name: 'سكوات', sets: 4, reps: '8-10', muscle: 'أرجل', restSeconds: 120,
     instructions: ['انزل حتى يصبح الفخذ موازياً للأرض', 'ادفع الأرض بكعبك للوقوف'],
     commonMistakes: ['رفع الكعب عن الأرض', 'تقويس الظهر في الأسفل'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Barbell_Full_Squat/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0047.gif']
   },
   legPress: {
     id: '14', name: 'ليج بريس', sets: 4, reps: '10-12', muscle: 'أرجل', restSeconds: 90,
     instructions: ['أنزل المنصة ببطء حتى زاوية 90 درجة', 'ادفع للأعلى بدون قفل الركبة'],
     commonMistakes: ['قفل الركبة في الأعلى', 'رفع المؤخرة عن المقعد'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Press/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0593.gif']
   },
   lunges: {
     id: '15', name: 'لانجز', sets: 3, reps: '10 لكل رجل', muscle: 'أرجل', restSeconds: 75,
@@ -169,19 +169,19 @@ export const allExercises: Record<string, Exercise> = {
     id: '16', name: 'ليج كيرل', sets: 3, reps: '10-12', muscle: 'خلفية', restSeconds: 60,
     instructions: ['اثنِ الركبة واسحب الوسادة نحو المؤخرة', 'ارجع ببطء مع المقاومة'],
     commonMistakes: ['رفع الوركين عن المقعد', 'سرعة الحركة'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Curl/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0582.gif']
   },
   legExtension: {
     id: '17', name: 'ليج اكستنشن', sets: 3, reps: '12-15', muscle: 'أمامية', restSeconds: 60,
     instructions: ['افرد الركبة للأعلى بالكامل', 'أنزل ببطء مع التحكم'],
     commonMistakes: ['الحركة السريعة', 'استخدام وزن ثقيل مع حركة جزئية'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Leg_Extensions/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0585.gif']
   },
   calfRaise: {
     id: '18', name: 'كاف ريز', sets: 4, reps: '15-20', muscle: 'سمانة', restSeconds: 45,
     instructions: ['ارفع جسمك على أطراف أصابعك', 'أنزل ببطء حتى تشعر بالتمدد'],
     commonMistakes: ['حركة سريعة بدون ضغط', 'عدم النزول بالكامل'],
-    images: ['https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/0.jpg', 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Calf_Press_On_The_Leg_Press_Machine/1.jpg']
+    images: ['https://raw.githubusercontent.com/omercotkd/exercises-gifs/main/assets/0542.gif']
   },
 };
 
